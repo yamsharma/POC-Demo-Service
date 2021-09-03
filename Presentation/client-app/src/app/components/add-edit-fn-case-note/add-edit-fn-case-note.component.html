@@ -1,0 +1,32 @@
+<div class="card m-5" style="width: 100%">
+  <div class="card-header">
+    <span *ngIf="!caseNoteId">Add New</span>
+    <span *ngIf="caseNoteId">Edit</span>
+    Case Note
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          [(ngModel)]="caseNoteTitle"
+          #title="ngModel"
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          required
+          minlength="3"
+          maxlength="80"
+          placeholder="Enter Title"
+        />
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          <div *ngIf="title.errors?.required">Title is required</div>
+          <div *ngIf="title.errors?.minlength">Title should be minimum {{ title.errors?.minlength.requiredLength }} characters</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-secondary mr-3" [disabled]="title.invalid" (click)="onSubmit()">Submit</button>
+      <button type="cancel" class="btn btn-secondary" [routerLink]="['/Home', true, fnId]">Cancel</button>
+    </form>
+  </div>
+</div>

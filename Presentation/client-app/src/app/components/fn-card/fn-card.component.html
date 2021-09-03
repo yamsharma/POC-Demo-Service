@@ -1,0 +1,13 @@
+<div class="card m-5" style="width: 20%" *ngIf="fnInfo">
+  <div class="card-header">Foreign National</div>
+  <a href="#" class="danger-link" (click)="displayCaseNotesComponent()">
+    <div class="card-body">
+      <h5 class="card-title">{{ fnInfo?.firstName }} {{ fnInfo?.lastName }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">ID: {{ fnInfo?.id }}</h6>
+    </div>
+  </a>
+</div>
+<app-fn-case-notes
+  *ngIf="loadCaseNotesComponent"
+  [fnId]="fnInfo?.id"
+></app-fn-case-notes>

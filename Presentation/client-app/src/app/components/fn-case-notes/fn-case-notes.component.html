@@ -1,0 +1,28 @@
+<div class="card m-5" style="width: 70%">
+  <div class="card-header">
+    Case Notes
+  </div>
+  <div class="card-body">
+    <table class="table" *ngIf="fnCaseNotes">
+      <tr *ngFor="let caseNote of fnCaseNotes; index as index">
+        <td width="80%">{{ caseNote.title }}</td>
+        <td width="10%">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/EditCaseNote', caseNote.foreignNationalId, caseNote.id, caseNote.title]" tooltip="Edit Title" placement="bottom">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="deleteCaseNote(caseNote.id)" tooltip="Delete Case Note" placement="bottom">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+    <div *ngIf="!fnCaseNotes">
+      No records found.
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-secondary ml-5" [routerLink]="['/AddCaseNote', 1675136072]">
+  Add Case Note
+</button>
